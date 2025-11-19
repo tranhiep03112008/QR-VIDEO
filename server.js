@@ -47,7 +47,7 @@ app.get('/qr/:sessionId', async (req, res) => {
   const sessionId = req.params.sessionId;
   if (!sessionId) return res.status(400).send('Invalid session ID');
   
-  const url = `http://localhost:3000/mobile.html?session=${sessionId}`; // URL cho điện thoại (thay localhost bằng domain thật nếu deploy)
+  const url = https://qr-video.onrender.com/mobile.html?session=${sessionId}';'. // URL cho điện thoại (thay localhost bằng domain thật nếu deploy)
   try {
     const qrCodeDataURL = await qrcode.toDataURL(url, { width: 400, height: 400 }); // QR to hơn
     res.json({ qrCode: qrCodeDataURL });
