@@ -51,9 +51,9 @@
   </style>
 </head>
 <body>
-  <h1>Enter Password</h1>
+  <h1>Nhập mật khẩu</h1>
   <input type="password" id="password" placeholder="Enter password" required>
-  <button onclick="submitPassword()">Submit</button>
+  <button onclick="submitPassword()">Xác nhận</button>
   <div id="message"></div>
 
   <script>
@@ -62,20 +62,20 @@
     const sessionId = urlParams.get('session');
 
     if (!sessionId) {
-      document.getElementById('message').innerText = 'Invalid session. Scan QR again.';
+      document.getElementById('message').innerText = 'Không hợp lễ. Vui lòng quét mã QR lại.';
     }
 
     function submitPassword() {
       const password = document.getElementById('password').value.trim();
       if (!password) {
-        document.getElementById('message').innerText = 'Please enter a password.';
+        document.getElementById('message').innerText = 'Vui lòng nhập mật khẩu.';
         return;
       }
       socket.emit('submit-password', { sessionId, password });
     }
 
     socket.on('password-incorrect', () => {
-      document.getElementById('message').innerText = 'Incorrect password. Try again.';
+      document.getElementById('message').innerText = 'Sai mật khẩu. Vui lòng thử lại.';
     });
   </script>
 </body>
